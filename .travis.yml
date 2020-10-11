@@ -1,15 +1,11 @@
 language: node_js
 node_js:
   - '10'
-
-before_deploy:
-  - yarn build:gh
-  - cp -rf ./.circleci ./public/
-  - echo '' > ./public/.nojekyll
+install:
+  - yarn install 
 deploy:
-  provider: pages
-  skip-cleanup: true
-  github-token: $GITHUB_GH
-  local-dir: ./public
+  provider: script
+  script: yarn run deploy
+  skip_cleanup: true
   on:
     branch: master

@@ -63,6 +63,7 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^4.0.0",
     "gatsby-plugin-eslint": "^2.0.8",
+    "gh-pages": "^3.1.0",
     "jest": "^26.0.1",
     "prettier": "^2.0.5"
   },
@@ -85,6 +86,7 @@
   "scripts": {
     "build": "gatsby build",
     "dev": "gatsby develop",
+    "deploy": "gatsby build --prefix-paths && gh-pages -d public",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "yarn run dev",
     "serve": "gatsby serve",
