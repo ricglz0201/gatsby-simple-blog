@@ -2,9 +2,9 @@
   "name": "gatsby-simple-blog",
   "description": "forked from gatsby-starter-blog with overreacted looking and with tags, breadcrumbs support",
   "version": "0.2.0",
-  "author": "thundermiracle",
+  "author": "ricglz0201",
   "bugs": {
-    "url": "https://github.com/thundermiracle/gatsby-simple-blog/issues"
+    "url": "https://github.com/ricglz0201/gatsby-simple-blog/issues"
   },
   "dependencies": {
     "disqus-react": "^1.0.8",
@@ -66,7 +66,7 @@
     "jest": "^26.0.1",
     "prettier": "^2.0.5"
   },
-  "homepage": "https://thundermiracle.github.io/gatsby-simple-blog",
+  "homepage": "https://ricglz0201.github.io/gatsby-simple-blog",
   "keywords": [
     "gatsbyjs",
     "starter",
@@ -80,16 +80,14 @@
   "main": "n/a",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thundermiracle/gatsby-simple-blog.git"
+    "url": "git+https://github.com/ricglz0201/gatsby-simple-blog.git"
   },
   "scripts": {
     "build": "gatsby build",
-    "build:gh": "gatsby build --prefix-paths",
     "dev": "gatsby develop",
     "format": "prettier --write src/**/*.{js,jsx}",
     "start": "yarn run dev",
     "serve": "gatsby serve",
-    "serve:gh": "gatsby serve --prefix-paths",
     "eslint": "eslint .",
     "jest": "jest",
     "test": "cross-env NODE_ENV=test yarn run eslint && cross-env NODE_ENV=test yarn run jest"
