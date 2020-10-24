@@ -1,11 +1,12 @@
 /**
+ * @flow
  * Bio component that queries for data
  * with Gatsby's StaticQuery component
  *
  * See: https://www.gatsbyjs.org/docs/static-query/
  */
 
-import React from 'react';
+import * as React from 'react';
 import { graphql, useStaticQuery } from 'gatsby';
 import Image from 'gatsby-image';
 
@@ -32,7 +33,7 @@ const bioQuery = graphql`
   }
 `;
 
-function Bio() {
+function Bio(): React.Node {
   const { avatar, site } = useStaticQuery(bioQuery);
   const { author, description } = site.siteMetadata;
   return (

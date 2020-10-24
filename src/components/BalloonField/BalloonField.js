@@ -1,23 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 
 import './BalloonField.css';
 
-function BalloonField({ children, className, ...restProps }) {
-  return (
-    <div className={`balloon ${className}`} {...restProps}>
-      {children}
-    </div>
-  );
+type Props = {
+  children: React.Node,
+  className: string,
 }
 
-BalloonField.propTypes = {
-  children: PropTypes.any.isRequired,
-  className: PropTypes.string,
-};
-
-BalloonField.defaultProps = {
-  className: '',
-};
+const BalloonField = ({children, className = ''}: Props): React.Node => (
+  <div className={`balloon ${className}`}>
+    {children}
+  </div>
+);
 
 export default BalloonField;

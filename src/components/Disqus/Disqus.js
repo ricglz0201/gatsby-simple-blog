@@ -1,10 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 
 import { graphql, useStaticQuery } from 'gatsby';
 import { DiscussionEmbed } from 'disqus-react';
 
-function Disqus({ identifier, title, show }) {
+type Props = {
+  identifier: any,
+  show: bool,
+  title: string,
+}
+
+function Disqus({ identifier, title, show = false }: Props): React.Node {
   const {
     site: {
       siteMetadata: { disqusShortName },
@@ -27,15 +33,5 @@ function Disqus({ identifier, title, show }) {
 
   return <DiscussionEmbed shortname={disqusShortName} config={{ identifier, title }} />;
 }
-
-Disqus.propTypes = {
-  identifier: PropTypes.any.isRequired,
-  title: PropTypes.string.isRequired,
-  show: PropTypes.bool,
-};
-
-Disqus.defaultProps = {
-  show: false,
-};
 
 export default Disqus;

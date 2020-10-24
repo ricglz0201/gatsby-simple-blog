@@ -1,66 +1,64 @@
+// @flow
 import './Breadcrumbs.css';
 
-import React from 'react';
-import PropTypes from 'prop-types';
+import * as React from 'react';
 import { Link } from 'gatsby';
 import { formatMessage } from 'utils/i18n';
 
-function Breadcrumbs({ data, showTop, base, langKey, ...restProps }) {
-  if (data == null) {
-    return null;
-  }
+type Data = {
+  text: string,
+  url: ?string,
+}
 
-  let topBCli;
-  if (showTop) {
-    topBCli = (
+type Props = {
+  data: ?Array<Data>,
+  showTop: ?bool,
+  base: ?string,
+}
+
+function Breadcrumb({ text, url }: Data): React.Node {
+  if (url != null) {
+    return (
       <li className="breadcrumbs-item">
-        <Link to={base} className="breadcrumbs-element">
-          {formatMessage('tHome')}
+        <Link to={url} className="breadcrumbs-element">
+          {text}
         </Link>
       </li>
     );
   }
+  return (
+    <li className="breadcrumbs-item_active">
+      <span className="breadcrumbs-element">{text}</span>
+    </li>
+  );
+
+}
+
+function Breadcrumbs({
+  data = null,
+  showTop = false,
+  base = '',
+}: Props): React.Node {
+  if (data == null) {
+    return null;
+  }
+
+  const topBCli = showTop ? (
+    <li className="breadcrumbs-item">
+      <Link to={base} className="breadcrumbs-element">
+        {formatMessage('tHome')}
+      </Link>
+    </li>
+  ) : null;
 
   return (
-    <ul className="breadcrumbs breadcrumbs-ul" {...restProps}>
+    <ul className="breadcrumbs breadcrumbs-ul">
       {topBCli}
-      {data.map(({ text, url }) => {
-        if (url != null) {
-          return (
-            <li className="breadcrumbs-item" key={text}>
-              <Link to={url} className="breadcrumbs-element">
-                {text}
-              </Link>
-            </li>
-          );
-        }
-        return (
-          <li className="breadcrumbs-item_active" key={text}>
-            <span className="breadcrumbs-element">{text}</span>
-          </li>
-        );
-      })}
+      {data.map(({ text, url }) => (
+        <Breadcrumb key={text} text={text} url={url} />
+      ))}
     </ul>
   );
 }
-
-Breadcrumbs.propTypes = {
-  data: PropTypes.arrayOf(
-    PropTypes.shape({
-      text: PropTypes.string.isRequired,
-      url: PropTypes.string,
-    }),
-  ),
-  showTop: PropTypes.bool,
-  base: PropTypes.string,
-  langKey: PropTypes.string,
-};
-
-Breadcrumbs.defaultProps = {
-  data: null,
-  showTop: false,
-  base: '',
-  langKey: 'en',
-};
 
 export default Breadcrumbs;
