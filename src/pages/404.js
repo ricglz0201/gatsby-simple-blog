@@ -7,10 +7,10 @@ import SEO from 'components/SEO';
 import { formatMessage } from '../utils/i18n';
 
 function NotFoundPage({ data, location }) {
-  const siteTitle = data.site.siteMetadata.title;
+  const {title} = data.site.siteMetadata;
 
   return (
-    <Layout location={location} title={siteTitle}>
+    <Layout location={location} title={title}>
       <SEO title={formatMessage('t404Title')} />
       <h1>{formatMessage('t404Title')}</h1>
       <p>{formatMessage('t404Content')}</p>
