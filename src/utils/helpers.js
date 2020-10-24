@@ -43,15 +43,14 @@ function getPreviousNextNode(posts, fromInd) {
   };
 }
 
-const isAlphabetNum = s =>
-  /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g.test(s);
+const alphabetNumRegex =
+  /[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g;
+
+const isAlphabetNum = s => alphabetNumRegex.test(s);
 
 function kebabCase(s) {
   if (isAlphabetNum(s)) {
-    return s
-      .match(/[A-Z]{2,}(?=[A-Z][a-z]+[0-9]*|\b)|[A-Z]?[a-z]+[0-9]*|[A-Z]|[0-9]+/g)
-      .map(x => x.toLowerCase())
-      .join('-');
+    return s.match(alphabetNumRegex).map(x => x.toLowerCase()).join('-');
   }
 
   return s
