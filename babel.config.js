@@ -1,5 +1,8 @@
 module.exports = {
-  presets: ['babel-preset-gatsby'],
+  presets: [
+    'babel-preset-gatsby',
+    '@babel/preset-flow'
+  ],
   plugins: [
     [
       'module-resolver',
