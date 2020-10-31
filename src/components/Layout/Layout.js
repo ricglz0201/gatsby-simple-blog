@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 
 import { useLang } from 'context/LanguageContext';
 import { rhythm } from 'utils/typography';
@@ -10,7 +10,15 @@ import Footer from './Footer';
 import ReadModeToggle from './ReadModeToggle';
 import Breadcrumbs from '../Breadcrumbs';
 
-function Layout({ children, location, title, breadcrumbs }) {
+type Props = {
+  children: React.Node,
+  location: Object,
+  title?: string,
+  breadcrumbs?: Array<any>,
+};
+
+
+function Layout({ children, location, title, breadcrumbs }: Props): React.Node {
   const { lang, homeLink, refresh } = useLang();
 
   React.useEffect(() => {
@@ -61,15 +69,7 @@ function Layout({ children, location, title, breadcrumbs }) {
   );
 }
 
-Layout.propTypes = {
-  children: PropTypes.any,
-  location: PropTypes.object.isRequired,
-  title: PropTypes.string,
-  breadcrumbs: PropTypes.array,
-};
-
 Layout.defaultProps = {
-  children: null,
   title: null,
   breadcrumbs: null,
 };

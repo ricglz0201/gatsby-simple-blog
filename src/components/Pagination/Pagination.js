@@ -1,11 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
+// @flow
+import * as React from 'react';
 import { Link } from 'gatsby';
-
 import './Pagination.css';
 
-const Pagination = ({ currentPage, totalPageNumber }) => {
+type Props = {
+  currentPage?: number,
+  totalPageNumber?: number,
+};
+
+const Pagination = ({
+  currentPage = 1,
+  totalPageNumber = 1,
+}: Props): React.Node => {
   const befMark =
     currentPage === 1 ? (
       <span className="disabled">&laquo;</span>
@@ -38,11 +44,6 @@ const Pagination = ({ currentPage, totalPageNumber }) => {
       {nextMark}
     </div>
   );
-};
-
-Pagination.propTypes = {
-  currentPage: PropTypes.number,
-  totalPageNumber: PropTypes.number,
 };
 
 Pagination.defaultProps = {

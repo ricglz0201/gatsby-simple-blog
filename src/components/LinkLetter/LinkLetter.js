@@ -1,21 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
+// @flow
+import * as React from 'react';
 import { Link } from 'gatsby';
-
 import './LinkLetter.css';
 
-function LinkLetter({ href, children, ...restProps }) {
-  return (
-    <Link className="lang-icon" to={href} {...restProps}>
-      {children}
-    </Link>
-  );
-}
-
-LinkLetter.propTypes = {
-  href: PropTypes.string.isRequired,
-  children: PropTypes.any.isRequired,
+type Props = {
+  href: string,
+  children: React.Node,
 };
+
+const LinkLetter = ({ href, children }: Props): React.Node => (
+  <Link className="lang-icon" to={href}>
+    {children}
+  </Link>
+);
 
 export default LinkLetter;

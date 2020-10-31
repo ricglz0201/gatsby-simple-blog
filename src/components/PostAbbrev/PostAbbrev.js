@@ -1,15 +1,30 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-
+// @flow
+import * as React from 'react';
 import { Link } from 'gatsby';
-
 import { rhythm } from 'utils/typography';
 import { formatReadingTime } from 'utils/helpers';
 import { formatDate } from 'utils/i18n';
-
 import TagList from '../TagList';
 
-function PostAbbrev({ slug, title, date, timeToRead, excerpt, tags, base }) {
+type Props = {
+  slug: string,
+  title?: string,
+  date: string,
+  timeToRead: number,
+  excerpt?: string,
+  tags?: Array<any>,
+  base?: string,
+};
+
+function PostAbbrev({
+  base = '',
+  date,
+  excerpt,
+  slug,
+  tags,
+  timeToRead,
+  title,
+}: Props): React.Node {
   let excerptPart;
   if (excerpt) {
     excerptPart = (
@@ -49,16 +64,6 @@ function PostAbbrev({ slug, title, date, timeToRead, excerpt, tags, base }) {
     </article>
   );
 }
-
-PostAbbrev.propTypes = {
-  slug: PropTypes.string.isRequired,
-  title: PropTypes.string,
-  date: PropTypes.string.isRequired,
-  timeToRead: PropTypes.number.isRequired,
-  excerpt: PropTypes.string,
-  tags: PropTypes.array,
-  base: PropTypes.string,
-};
 
 PostAbbrev.defaultProps = {
   title: null,

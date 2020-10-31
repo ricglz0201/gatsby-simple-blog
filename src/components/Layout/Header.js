@@ -1,16 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react';
 
 import { Link } from 'gatsby';
 
 import { scale } from 'utils/typography';
 
-/**
- * base MUST include slash (eg: en/)
- *
- * @param {*object} { location, title, base}
- */
-function Header({ location, title, base }) {
+type Props = {
+  location: string | Object,
+  title?: string,
+  base?: string,
+};
+
+function Header({ location, title, base = '' }: Props): React.Node {
   // eslint-disable-next-line no-undef
   const rootPath = `${__PATH_PREFIX__}${base}`;
 
@@ -59,12 +60,6 @@ function Header({ location, title, base }) {
     </h3>
   );
 }
-
-Header.propTypes = {
-  location: PropTypes.oneOfType([PropTypes.string, PropTypes.object]).isRequired,
-  title: PropTypes.string,
-  base: PropTypes.string,
-};
 
 Header.defaultProps = {
   title: null,
