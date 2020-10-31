@@ -122,5 +122,6 @@ module.exports = {
         gaConfigPath: 'gaConfig.json',
       },
     },
+    `gatsby-plugin-flow`
   ],
 };
