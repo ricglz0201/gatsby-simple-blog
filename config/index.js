@@ -9,7 +9,6 @@ const site = {
   twitter: 'ricglz',
   github: githubUsername,
   disqusShortName: 'gatsby-simple-blog',
-  googleTrackingId: '',
   lang: 'en',
   displayTranslations: true,
   postsPerPage: 3,
