@@ -73,8 +73,7 @@
     "starter",
     "blog",
     "tag",
-    "eslint",
-    "breadcrumbs",
+    "eslint"
   ],
   "license": "MIT",
   "main": "n/a",
