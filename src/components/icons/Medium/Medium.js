@@ -1,12 +1,13 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import RotateLinkImg from '../../RotateLinkImg';
+import { Props } from '../IconType';
 import dark from './dark.png';
 import light from './light.png';
 import withThemeFlag from '../../../utils/withThemeFlag';
 
-function Medium({ username, size, isLightTheme }) {
+function Medium({ username, size, isLightTheme }: Props) {
   if (!username) return null;
 
   return (
@@ -17,12 +18,6 @@ function Medium({ username, size, isLightTheme }) {
     />
   );
 }
-
-Medium.propTypes = {
-  username: PropTypes.string,
-  size: PropTypes.number,
-  isLightTheme: PropTypes.bool,
-};
 
 Medium.defaultProps = {
   username: null,

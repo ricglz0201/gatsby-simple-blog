@@ -1,5 +1,6 @@
-import React, { useContext } from 'react';
-import PropTypes from 'prop-types';
+// @flow
+import * as React from 'react'
+import { useContext } from 'react'
 
 import getCurrentLangKey from 'utils/getCurrentLangKey';
 import { site, supportedLanguages } from 'config';
@@ -16,7 +17,9 @@ const initValues = {
 };
 const LanguageContext = React.createContext(initValues);
 
-function LanguageProvider({ children }) {
+type Props = { children: React.Node }
+
+function LanguageProvider({ children }: Props) {
   const { lang: defaultLang } = site;
   const [lang, setLang] = React.useState(initValues.lang);
   const [homeLink, setHomeLink] = React.useState(initValues.homeLink);
@@ -58,10 +61,6 @@ function LanguageProvider({ children }) {
     </LanguageContext.Provider>
   );
 }
-
-LanguageProvider.propTypes = {
-  children: PropTypes.any.isRequired,
-};
 
 const useLang = () => {
   const langContext = useContext(LanguageContext);

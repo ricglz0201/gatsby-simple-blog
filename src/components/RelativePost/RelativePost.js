@@ -1,12 +1,14 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { Link } from 'gatsby';
 
 import { rhythm } from 'utils/typography';
 import { formatDate } from 'utils/i18n';
 
-function RelativePost({ postNode }) {
+type Props = { postNode: Object };
+
+function RelativePost({ postNode }: Props) {
   const {
     fields: { slug },
     frontmatter: { title, date },
@@ -40,9 +42,5 @@ function RelativePost({ postNode }) {
     </Link>
   );
 }
-
-RelativePost.propTypes = {
-  postNode: PropTypes.object.isRequired,
-};
 
 export default RelativePost;

@@ -1,12 +1,13 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import RotateLinkImg from '../../RotateLinkImg';
+import { Props } from '../IconType';
 import dark from './dark.png';
 import light from './light.png';
 import withThemeFlag from '../../../utils/withThemeFlag';
 
-function Facebook({ username, size, isLightTheme }) {
+function Facebook({ username, size, isLightTheme }: Props) {
   if (!username) return null;
 
   return (
@@ -17,12 +18,6 @@ function Facebook({ username, size, isLightTheme }) {
     />
   );
 }
-
-Facebook.propTypes = {
-  username: PropTypes.string,
-  size: PropTypes.number,
-  isLightTheme: PropTypes.bool,
-};
 
 Facebook.defaultProps = {
   username: null,
