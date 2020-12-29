@@ -1,10 +1,15 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import { formatMessage } from 'utils/i18n';
 import RelativePost from '../RelativePost';
 
-function RelativePosts({ postNodes, lang }) {
+type Props = {
+  lang?: string,
+  postNodes?: Array<any>,
+}
+
+function RelativePosts({ postNodes, lang }: Props) {
   const postNodesNotNull = postNodes.filter(x => x);
 
   if (postNodesNotNull.length === 0) {
@@ -21,11 +26,6 @@ function RelativePosts({ postNodes, lang }) {
     </>
   );
 }
-
-RelativePosts.propTypes = {
-  postNodes: PropTypes.array,
-  lang: PropTypes.string,
-};
 
 RelativePosts.defaultProps = {
   postNodes: [],
