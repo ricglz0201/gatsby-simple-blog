@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Utilities
 import { kebabCase } from 'utils/helpers';
@@ -21,6 +20,30 @@ const styles = {
   },
 };
 
+type MarkdownRemark = {
+  group: Array<{
+    fieldValue: string,
+    totalCount: number,
+  }>
+}
+
+type Site = {
+  siteMetadata: {
+    title: string,
+    lang: string,
+  }
+}
+
+type Data = {
+  allMarkdownRemark: MarkdownRemark,
+  site: Site,
+}
+
+type Props = {
+  data: Data,
+  location: Object
+}
+
 const TagsPage = ({
   data: {
     allMarkdownRemark: { group },
@@ -29,7 +52,7 @@ const TagsPage = ({
     },
   },
   location,
-}) => {
+}: Props) => {
   const { homeLink } = useLang();
   const tTags = formatMessage('tTags');
 
@@ -54,26 +77,6 @@ const TagsPage = ({
       </div>
     </Layout>
   );
-};
-
-TagsPage.propTypes = {
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      group: PropTypes.arrayOf(
-        PropTypes.shape({
-          fieldValue: PropTypes.string.isRequired,
-          totalCount: PropTypes.number.isRequired,
-        }).isRequired,
-      ),
-    }),
-    site: PropTypes.shape({
-      siteMetadata: PropTypes.shape({
-        title: PropTypes.string.isRequired,
-        lang: PropTypes.string.isRequired,
-      }),
-    }),
-  }).isRequired,
-  location: PropTypes.object.isRequired,
 };
 
 export default TagsPage;
