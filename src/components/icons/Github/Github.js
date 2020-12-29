@@ -2,7 +2,7 @@
 import React from 'react';
 
 import RotateLinkImg from '../../RotateLinkImg';
-import { Props } from '../IconType';
+import type { Props } from '../IconType';
 import dark from './dark.png';
 import light from './light.png';
 import withThemeFlag from '../../../utils/withThemeFlag';

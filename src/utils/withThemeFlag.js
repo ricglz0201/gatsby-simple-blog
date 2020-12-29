@@ -1,12 +1,22 @@
-import React from 'react';
+// @flow
+import * as React from 'react'
 
-export default function withThemeFlag(BaseComponent) {
-  class injectTheme extends React.Component {
+type State = {
+  theme: null | any
+}
+
+type BaseComponentProps = {
+  isLightTheme: boolean,
+  ...,
+}
+
+export default function withThemeFlag(
+  BaseComponent: React.StatelessFunctionalComponent<BaseComponentProps>
+): any {
+  class injectTheme extends React.Component<Object, State> {
     constructor() {
       super();
-      this.state = {
-        theme: null,
-      };
+      this.state = { theme: null };
     }
 
     componentDidMount() {
