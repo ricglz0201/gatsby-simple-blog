@@ -1,5 +1,5 @@
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 import { graphql } from 'gatsby';
 
 import Bio from 'components/Bio';
@@ -10,7 +10,13 @@ import Pagination from 'components/Pagination';
 import { useLang } from 'context/LanguageContext';
 import { formatMessage } from 'utils/i18n';
 
-function BlogIndex({ pageContext, data, location }) {
+type Props = {
+  data: Object,
+  location: Object,
+  pageContext: Object,
+}
+
+function BlogIndex({ pageContext, data, location }: Props) {
   const { from, to, currentPage, numPages } = pageContext;
   const siteTitle = data.site.siteMetadata.title;
   const posts = data.allMarkdownRemark.edges;
@@ -46,14 +52,6 @@ function BlogIndex({ pageContext, data, location }) {
     </Layout>
   );
 }
-
-BlogIndex.propTypes = {
-  pageContext: PropTypes.object.isRequired,
-  data: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-};
-
-BlogIndex.defaultProps = {};
 
 export default BlogIndex;
 

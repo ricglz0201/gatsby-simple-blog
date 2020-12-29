@@ -1,6 +1,5 @@
-/* eslint-disable react/prop-types */
+// @flow
 import React from 'react';
-import PropTypes from 'prop-types';
 
 // Components
 import { graphql } from 'gatsby';
@@ -12,7 +11,25 @@ import Bio from 'components/Bio';
 import { useLang } from 'context/LanguageContext';
 import { formatMessage } from 'utils/i18n';
 
-const TagPageTemplate = ({ pageContext, data, location }) => {
+type Edge = {
+  node: {
+    frontmatter: { title: string },
+    fields: { slug: string, langKey: string },
+  },
+}
+
+type Data = {
+  allMarkdownRemark: { totalCount: number, edges: Array<Edge> },
+  site: { siteMetadata: { title: string } }
+}
+
+type Props = {
+  data: Data,
+  location: Object,
+  pageContext: { tag: string },
+}
+
+const TagPageTemplate = ({ pageContext, data, location }: Props) => {
   const { tag } = pageContext;
   const { edges, totalCount } = data.allMarkdownRemark;
   const siteTitle = data.site.siteMetadata.title;
@@ -51,31 +68,6 @@ const TagPageTemplate = ({ pageContext, data, location }) => {
       </aside>
     </Layout>
   );
-};
-
-TagPageTemplate.propTypes = {
-  pageContext: PropTypes.shape({
-    tag: PropTypes.string.isRequired,
-  }).isRequired,
-  data: PropTypes.shape({
-    allMarkdownRemark: PropTypes.shape({
-      totalCount: PropTypes.number.isRequired,
-      edges: PropTypes.arrayOf(
-        PropTypes.shape({
-          node: PropTypes.shape({
-            frontmatter: PropTypes.shape({
-              title: PropTypes.string.isRequired,
-            }),
-            fields: PropTypes.shape({
-              slug: PropTypes.string.isRequired,
-              langKey: PropTypes.string.isRequired,
-            }),
-          }),
-        }).isRequired,
-      ),
-    }),
-  }).isRequired,
-  location: PropTypes.object.isRequired,
 };
 
 export default TagPageTemplate;

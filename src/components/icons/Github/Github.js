@@ -1,12 +1,17 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import RotateLinkImg from '../../RotateLinkImg';
 import dark from './dark.png';
 import light from './light.png';
 import withThemeFlag from '../../../utils/withThemeFlag';
 
-function Github({ username, size, isLightTheme }) {
+type Props = {
+  isLightTheme?: boolean,
+  size?: number,
+  username?: string,
+}
+
+function Github({ username, size, isLightTheme }: Props) {
   if (!username) return null;
 
   return (
@@ -17,12 +22,6 @@ function Github({ username, size, isLightTheme }) {
     />
   );
 }
-
-Github.propTypes = {
-  username: PropTypes.string,
-  size: PropTypes.number,
-  isLightTheme: PropTypes.bool,
-};
 
 Github.defaultProps = {
   username: null,

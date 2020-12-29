@@ -1,5 +1,4 @@
 import React from 'react';
-import PropTypes from 'prop-types';
 import { Link, graphql } from 'gatsby';
 
 import Bio from 'components/Bio';
@@ -15,7 +14,9 @@ import { formatDate } from 'utils/i18n';
 import { rhythm, scale } from 'utils/typography';
 import { useLang } from 'context/LanguageContext';
 
-function BlogPostTemplate({ data, pageContext, location }) {
+type Props = { data: Object, pageContext: Object, location: Object }
+
+function BlogPostTemplate({ data, pageContext, location }: Props) {
   const post = data.markdownRemark;
   const siteTitle = data.site.siteMetadata.title;
   const { previous, next, previousInSameTag, nextInSameTag, translationsLink } = pageContext;
@@ -94,12 +95,6 @@ function BlogPostTemplate({ data, pageContext, location }) {
     </Layout>
   );
 }
-
-BlogPostTemplate.propTypes = {
-  data: PropTypes.object.isRequired,
-  pageContext: PropTypes.object.isRequired,
-  location: PropTypes.object.isRequired,
-};
 
 export default BlogPostTemplate;
 

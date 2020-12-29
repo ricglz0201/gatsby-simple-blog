@@ -1,13 +1,14 @@
 import './TagList.css';
 
 import React from 'react';
-import PropTypes from 'prop-types';
 
 import Tag from '../Tag';
 
-function TagList({ tags, baseUrl, ...restProps }) {
+type Props = {tags: Array<any>, baseUrl ?: string}
+
+function TagList({ tags, baseUrl }: Props) {
   return (
-    <ul className="tag-ul" {...restProps}>
+    <ul className="tag-ul">
       {tags.map(text => (
         <li key={text}>
           <Tag text={text} url={`${baseUrl}/${text}`} />
@@ -16,11 +17,6 @@ function TagList({ tags, baseUrl, ...restProps }) {
     </ul>
   );
 }
-
-TagList.propTypes = {
-  tags: PropTypes.array.isRequired,
-  baseUrl: PropTypes.string,
-};
 
 TagList.defaultProps = {
   baseUrl: '',
